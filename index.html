@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Galleria Noir - an elegant modern dark-theme gallery with infinity illusion. Immerse yourself in curated photography in a mesmerizing infinite scroll experience.">
+    <meta name="keywords" content="infinity illusion gallery, dark theme photography, elegant gallery, modern photo viewer, infinite scroll, aesthetic images, immersive gallery, dark mode gallery, visual infinity, curated photography, noir gallery">
+    <meta name="author" content="Ayman Soliman">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="theme-color" content="#000000">
+    <meta name="color-scheme" content="dark light">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://galleria-noir.vercel.app/">
+    <!-- Preconnect to required origins for faster loading -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+
+    <!-- Favicons -->
+    <link rel="icon" href="assets/icon.png?v=3" type="image/png" sizes="48x48">
+    <link rel="apple-touch-icon" href="assets/icon.png?v=3" sizes="180x180">
+
+    <title>Galleria Noir</title>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Galleria Noir">
+    <meta property="og:url" content="https://galleria-noir.vercel.app/">
+    <meta property="og:title" content="Galleria Noir - Curated Photography Collection">
+    <meta property="og:description" content="Discover stunning photography in Galleria Noir - a curated collection of aesthetic images spanning nature, travel, fashion, music, and cinematic moments. Browse high-quality photos in an elegant, modern interface.">
+    <meta property="og:image" content="https://res.cloudinary.com/dxlofja7z/image/upload/Galleria-Noir-Design_szvq0d.png">
+    <meta property="og:image:alt" content="Galleria Noir - Photography Collection Preview">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@a_soliman1783">
+    <meta name="twitter:creator" content="@a_soliman1783">
+    <meta name="twitter:url" content="https://galleria-noir.vercel.app/">
+    <meta name="twitter:title" content="Galleria Noir - Elegant Dark Gallery with Infinity Illusion">
+    <meta name="twitter:description" content="Experience an elegant modern dark-theme gallery with infinity illusion. Immerse yourself in curated photography with a mesmerizing infinite scroll experience.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dxlofja7z/image/upload/Galleria-Noir-Design_szvq0d.png">
+    <meta name="twitter:image:alt" content="Galleria Noir - Dark Theme Gallery with Infinity Illusion">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header>
+    <a id="logo"
+         onclick="
+            query = 'aesthetic,minimalism';
+            window.localStorage.setItem('query', 'Galleria Noir');
+            window.location.reload()
+         "
+         tabindex="0"
+        >
+        <img src="assets/logo.png" alt="Galleria Noir Logo" fetchpriority="high">
+    </a>
+
+    <button type="button" id="menu-icon" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <div id="categories" class="hidden" inert>
+        <div>
+            <ul>
+                <li tabindex="0" aria-label="search" class="search-container">
+                    <label>
+                        <input type="text" name="keyword" placeholder="search">
+                        <button type="button" class="search-icon" aria-label="Search">
+                            <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </label>
+                </li>
+                <li><button type="button" class="category" data-keyword="nature" aria-label="Nature Category">nature</button></li>
+                <li><button type="button" class="category" data-keyword="food" aria-label="Food Category">food</button></li>
+                <li><button type="button" class="category" data-keyword="travel" aria-label="Travel Category">travel</button></li>
+                <li><button type="button" class="category" data-keyword="fashion" aria-label="Fashion Category">fashion</button></li>
+            </ul>
+        </div>
+    </div>
+
+</header>
+
+<main>
+    <div class="container">
+        <div id="canvas">
+            <!-- Items will be dynamically generated here -->
+        </div>
+        
+        <!-- Overlay for expanded items -->
+        <div id="overlay"></div>
+        
+    </div>
+</main>
+
+<footer>
+    <div id="copyright">Galleria Noir &copy; </div>
+
+    <div id="social-links">
+        <a href="https://www.linkedin.com/in/aymansoliman-dev/" target="_blank">
+            <img src="assets/linkedin.png?v=2" alt="LinkedIn" fetchpriority="high">
+        </a>
+        <a href="https://github.com/aymansoliman-dev" target="_blank">
+            <img src="assets/github.png?v=2" alt="Github" fetchpriority="high">
+        </a>
+        <a href="https://x.com/a_soliman1783" target="_blank">
+            <img src="assets/twitter.png?v=2" alt="Twitter" fetchpriority="high">
+        </a>
+    </div>
+</footer>
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>
