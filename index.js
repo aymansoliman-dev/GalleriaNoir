@@ -1,3 +1,10 @@
+import gsap from "gsap";
+import { CustomEase } from "gsap/CustomEase";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+// Register the plugins
+gsap.registerPlugin(CustomEase, ScrollToPlugin);
+
 const CONFIG = {
   accessKey: `${import.meta.env.VITE_UNSPLASH_ACCESS_KEY}`,
   apiUrl: 'https://api.unsplash.com/search/photos',
